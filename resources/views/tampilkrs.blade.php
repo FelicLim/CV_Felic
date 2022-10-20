@@ -37,12 +37,12 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav ml-auto">
-								<li class="nav-item active"><a class="nav-link" href="home">Home</a></li> 
+								<li class="nav-item"><a class="nav-link" href="home">Home</a></li> 
 								<li class="nav-item"><a class="nav-link" href="experiences">Experiences</a></li> 
 								<li class="nav-item"><a class="nav-link" href="achievements">Achievements</a></li> 
 								<li class="nav-item"><a class="nav-link" href="gallery">Gallery</a></li> 
 								<li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
-								<li class="nav-item"><a class="nav-link" href="tampilkrs">Lihat KRS</a></li>
+                                <li class="nav-item active"><a class="nav-link" href="tampilkrs">Lihat KRS</a></li>
 							</ul>
 						</div> 
 					</div>
@@ -50,17 +50,17 @@
             </div>
         </header>
         <!--================Header Menu Area =================-->
-
+        
         <!--================Home Banner Area =================-->
         <section class="banner_area">
             <div class="box_1620">
 				<div class="banner_inner d-flex align-items-center">
 					<div class="container">
 						<div class="banner_content text-center">
-							<h2>Achievements</h2>
+							<h2>Lihat KRS</h2>
 							<div class="page_link">
 								<a href="home">Home</a>
-								<a href="achievements">Achievements</a>
+								<a href="experiences">Lihat KRS</a>
 							</div>
 						</div>
 					</div>
@@ -69,60 +69,107 @@
         </section>
         <!--================End Home Banner Area =================-->
         
-        <!--================Feature Area =================-->
-        <section class="feature_area p_120">
+         <!--================KRS Area =================-->
+         <section class="welcome_area p_120">
         	<div class="container">
-        		<div class="main_title">
-        			<h2>my achievements</h2>
-        			<p>If you are looking for someone to learn and grow together, you may contact me so that we can grow up, glow up, and show up.</p>
-        		</div>
-        		<div class="feature_inner row">
-        			<div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<i class="fa fa-trophy"></i>
-        					<h4>Project Management Ready</h4>
-        					<p>Project Management Ready is an official certification from the PMI that has been internationally recognized by the industry. </p>
-        				</div>
-        			</div>
-        			<div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<i class="fa fa-pencil"></i>
-        					<h4>Basic Design Class</h4>
-        					<p>Basic Design Class is an tutoring class from Himpunan Mahasiswa Program Studi Sistem Informasi for students to study about design by using Illustrator and Photoshop.</p>
-        				</div>
-        			</div>
-        			<div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<i class="fa fa-music"></i>
-        					<h4>ABRSM Grade 8 Piano</h4>
-        					<p>ABRSM is the exam board of the Royal Schools of Music, delivering over 650000 music exams and assessments every year in 93 countries. I attend the piano test.</p>
-        				</div>
-        			</div>
-                    <div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<i class="fa fa-user"></i>
-        					<h4>KPU 2022</h4>
-        					<p>Komisi Pemilihan Umum is a platform to elect the next presidential candidate of an organization. I got the opportunity to become the speaker to share my experience at the KPU 2022.</p>
-        				</div>
-        			</div>
-                    <div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<i class="fa fa-users"></i>
-        					<h4>Leadership Development Camp</h4>
-        					<p>In its simplest form, leadership is influencing other people. Therefore, anyone who can influence people to follow them has leadership qualities.</p>
-        				</div>
-        			</div>
-                    <div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<i class="fa fa-trophy"></i>
-        					<h4>UPH Silver Scholarship Recepient</h4>
-        					<p>With all my experience and achievements in college, I got the opportunity to become one of the silver scholarship recepient of UPH.</p>
-        				</div>
-        			</div>
+        		<div class="row welcome_inner">
+					<div class="welcome_text">
+						<h4>KRS Information</h4>
+					</div>
+					<table class="table table-borderless">
+						<tbody>
+						  <tr>
+							<?php
+							$nama = DB::table('mahasiswa')
+							->where('ID_mahasiswa', '1001')
+							->value('Nama');
+
+							echo "<td><p>Nama</p></td>";
+							echo "<td><p>".$nama."</p></td>";
+							?>
+
+						  <tr>
+							<?php
+							$studentid = DB::table('mahasiswa')
+							->where('ID_mahasiswa', '1001')
+							->value('StudentID');
+		
+							echo "<td><p>Student ID</p></td>";
+							echo "<td><p>".$studentid."</p></td>";
+							?>
+						  </tr>
+
+						  <tr>
+							<?php
+							$term = DB::table('term')
+							->where('ID_term', '1')
+							->value('kode_term');
+					
+							echo "<td><p>Term</p></td>";
+							echo "<td><p>".$term."</p></td>";
+							?>
+						  </tr>
+
+						  <tr>
+							<?php
+							$total=0;
+							$id=1;
+							while($id<7){                    
+								$temp = $total + DB::table('matakuliah')->where('id_matakuliah',$id)->value('sks');
+								$total = $temp;
+								$id++;
+							}
+							echo "<td><p>Total SKS</p></td>";
+							echo "<td><p>".$total."</p></td>";
+						?>
+						  </tr>
+
+						</tbody>
+					</table>
+					<table class="table table-hover">
+						<thead class="thead-dark">
+							<tr>
+							<th scope="col">No</th>
+							<th scope="col">Kode Mata Kuliah</th>
+							<th scope="col">Nama Mata Kuliah</th>
+							<th scope="col">SKS</th>
+						  </tr>
+						</thead>
+						<tbody>
+						<?php
+                        $no=1;
+                        while ($no<7) {
+                            
+                            $kodematakuliah = DB::table('matakuliah')
+                            ->where('id_matakuliah', $no)
+                            ->value('kode_matakuliah');
+
+                            $namamatakuliah = DB::table('matakuliah')
+                            ->where('id_matakuliah', $no)
+                            ->value('nama_matakuliah');
+
+                            $sks = DB::table('matakuliah')
+                            ->where('id_matakuliah', $no)
+                            ->value('sks');
+
+                            echo "<tr>";
+                            echo "<td>".$no."</td>";                        
+                            echo "<td>".$kodematakuliah."</td>";
+                            echo "<td>".$namamatakuliah."</td>";
+                            echo "<td style='text-align:left'>".$sks."</td>";
+                            echo "</tr>";
+
+                            $no++;
+                        }  
+						
+                    ?>
+					</tbody>
+					</table>
+
         		</div>
         	</div>
         </section>
-        <!--================End Feature Area =================-->
+        <!--================End KRS Area =================-->
         
         <!--================Footer Area =================-->
         <footer class="footer_area p_120">

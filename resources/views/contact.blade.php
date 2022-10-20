@@ -42,7 +42,8 @@
 								<li class="nav-item"><a class="nav-link" href="achievements">Achievements</a></li> 
 								<li class="nav-item"><a class="nav-link" href="gallery">Gallery</a></li> 
 								<li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
-							</ul>
+                                <li class="nav-item"><a class="nav-link" href="tampilkrs">Lihat KRS</a></li>
+                            </ul>
 						</div> 
 					</div>
             	</nav>
