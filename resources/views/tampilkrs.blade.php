@@ -43,6 +43,7 @@
 								<li class="nav-item"><a class="nav-link" href="gallery">Gallery</a></li> 
 								<li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
                                 <li class="nav-item active"><a class="nav-link" href="tampilkrs">Lihat KRS</a></li>
+								<li class="nav-item"><a class="nav-link" href="app">Lihat KHS</a></li>
 							</ul>
 						</div> 
 					</div>
@@ -102,7 +103,7 @@
 						  <tr>
 							<?php
 							$term = DB::table('term')
-							->where('ID_term', '1')
+							->where('ID_term', '3')
 							->value('kode_term');
 					
 							echo "<td><p>Term</p></td>";
@@ -138,7 +139,7 @@
 						<tbody>
 						<?php
                         $no=1;
-                        while ($no<7) {
+                        while ($no<4) {
                             
                             $kodematakuliah = DB::table('matakuliah')
                             ->where('id_matakuliah', $no)

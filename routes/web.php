@@ -40,3 +40,7 @@ Route::get('contact', function () {
 Route::get('tampilkrs', function () {
     return view('tampilkrs');
 });
+
+Route::get('app', function () {
+    return view('app');
+});
